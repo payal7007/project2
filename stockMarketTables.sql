@@ -3,13 +3,10 @@ use stockMarketDB
 
 create table Stocks (
     stockId int primary key identity,
-    
     stockSymbol varchar(20),
-	stockName varchar(20),
-	createdOn datetime default getdate()
+    stockName varchar(20),
+    createdOn datetime default getdate()
 );
-insert into Stocks values('AAPL','Apple inc.',getdate())
-insert into Stocks values('FB','Facebook inc.',getdate())
 
 create table PriceHistory (
     priceId int primary key identity,
@@ -18,18 +15,16 @@ create table PriceHistory (
     highPrice decimal(10, 2),
     lowPrice decimal(10, 2),
     closePrice decimal(10, 2),
-	createdOn datetime default getdate(),  
+    createdOn datetime default getdate(),  
 );
-insert into PriceHistory values ( 1,150.50, 157.00, 155.00, 150.00,getdate());
-insert into PriceHistory values(2,  50.00, 60.00, 45.00, 55.00,getdate());
+
 create table Users (
     userId int primary key identity,
     username varchar(20),
     email varchar(20),
-	createdOn datetime default getdate(), 
+    createdOn datetime default getdate(), 
 );
-insert into Users values( 'jiya', 'jiya@gmail.com',getdate());
-insert into Users values( 'jiya', 'juhi@gmail.com',getdate());
+
 
 create table Trade (
     tradeId int primary key identity,
@@ -40,8 +35,7 @@ create table Trade (
     tradeQuantity int,
     createdOn datetime default getdate()
 );
-insert into Trade values( 1, 1, 'Buy', 102.00, 10, getdate());
-insert into Trade values( 2, 1, 'Buy', 102.00, 10, getdate());
+
 create table Orders (
     orderId int primary key identity,
     stockId int,
@@ -51,8 +45,7 @@ create table Orders (
     orderQuantity int,
     createdOn datetime default getdate()  
 );
-insert into Trade values( 1, 1, 'Buy', 102.00, 10, getdate());
-insert into Trade values( 2, 1, 'Buy', 102.00, 10, getdate());
+
 create table TransactionHistory (
     transactionId int primary key identity,
     userId int,
@@ -61,8 +54,7 @@ create table TransactionHistory (
     transactionAmount decimal(10, 2),
     createdOn datetime default getdate() 
 );
-insert into TransactionHistory values( 1, 1, 'Deposit', 1000.00, getdate());
-insert into TransactionHistory values( 2, 2, 'Withdrawal', 1000.00, getdate());
+
 CREATE TABLE TradeExecution (
     tradeExecutionId int primary key identity,
     buyOrderId int,
@@ -70,7 +62,7 @@ CREATE TABLE TradeExecution (
     executionPrice decimal(10, 2),
     executionQuantity int,
 );
-insert into TransactionHistory values( 1, 2, 103.75, 5,getdate())
+
 
 --find the total trade quantity for a specific stock 
 select s.stockName, sum(t.tradeQuantity) AS totalTradeQuantity,      
