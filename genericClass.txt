@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+namespace StockMarket
+{ 
+
+public class Baseclass<T ,V>
+{
+   public int StockId { get; set; }
+   public DateTime CreatedOn { get; set; }
+}
+
+    public class Stock<T>:Baseclass<T,string>
+    {
+        public string stockSymbol { get; set; }
+        public string stockName { get; set; }
+
+     }
+     public class PriceHistory<T>:Baseclass<T,decimal>
+     {
+        public int StockId { get; set; }
+        public decimal openPrice { get; set; }
+        public decimal highPrice { get; set; }
+        public decimal lowPrice { get; set; }
+        public decimal closePrice { get; set; }
+      }
+	public class Users<T> : baseclass<T,string>  
+        {
+         public string username { get; set; }
+         public string email { get; set; }
+        }
+	public class Trade<T> : baseclass<T,int>
+	{
+	
+        public int StockId { get; set; }
+        public int userId { get; set; }
+        public int tradeType { get; set; }
+        public int tradeQuantity { get; set; }
+	
+	}
+	
+        public class Orders<T> : baseclass<T,int>
+	{
+        public int StockId { get; set; }
+        public int userId { get; set; }
+        public int orderType { get; set; }
+        public int orderPrice { get; set; }
+        public int orderQuantity { get; set; }
+	
+	}
+	
+
+    public class TransactionHistory<T> : baseclass<T,int>
+	{
+
+        public int userId { get; set; }
+		public int StockId { get; set; }
+		public int transactionType { get; set; }
+        public int transactionAmount { get; set; }
+		 
+	}	
+
+
+    public class TradeExecution<T> : baseclass<T,int>
+	{
+	
+        public int buyOrderId { get; set; }
+		public int sellOrderId { get; set; }
+		public int executionPrice { get; set; }
+        public int executionQuantity { get; set; }
+
+	}
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+             Stocks<int> = new Stock<int>
+            {
+	        StockId = 1,
+                stockSymbol = "AAPL",
+                stockName = "Apple Inc.",
+                CreatedOn = DateTime
+            };
+	    Console.WriteLine("Stock");
+            Console.WriteLine($"Symbol: {stock.StockSymbol}");
+            Console.WriteLine($"Name: {stock.StockName}");
+            Console.WriteLine($"Stock ID: {stock.StockId}");
+            Console.WriteLine($"Created On: {stock.CreatedOn}");
+
+	    priceHistory<int> = new PriceHistory<int>
+            {
+			    priceId = 1,
+                StockId = 1,
+                openPrice = 150.00,
+                highPrice = 160.00,
+                lowPrice = 145.00,
+                closePrice = 155.00,
+                createdOn = DateTime.Now
+            };
+	    Console.WriteLine("\nPrice History");
+            Console.WriteLine($"Stock ID: {priceHistory.StockId}");
+            Console.WriteLine($"Open Price: {priceHistory.OpenPrice}");
+            Console.WriteLine($"High Price: {priceHistory.HighPrice}");
+            Console.WriteLine($"Low Price: {priceHistory.LowPrice}");
+            Console.WriteLine($"Close Price: {priceHistory.ClosePrice}");
+            Console.WriteLine($"Created On: {priceHistory.CreatedOn}");
+	
+
+}
